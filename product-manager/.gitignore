@@ -47,10 +47,10 @@ build/
 
 ### Vaadin ###
 node_modules/
-frontend/generated/
 pnpmfile.js
 package-lock.json
-webpack.generated.js
+
+
 
 ### Logs ###
 *.log
