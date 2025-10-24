@@ -1,6 +1,6 @@
-# Product Manager - Sistema Completo de Gerenciamento
+# Product Manager - Sistema Completo de Gestão de produtos 
 
-Sistema completo de gerenciamento de produtos desenvolvido com Spring Boot seguindo os princípios de Clean Architecture, com interface web moderna em Vaadin, autenticação, monitoramento, testes unitários e inteligência artificial integrada.
+Sistema completo de gestão de produtos desenvolvido com Spring Boot seguindo os princípios de Clean Architecture, com interface web moderna em Vaadin, autenticação, monitoramento, testes unitários e inteligência artificial integrada.
 
 **Desafio Técnico - Dev Jr - PARTNER Pro**
 
