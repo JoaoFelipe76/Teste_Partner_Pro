@@ -233,6 +233,7 @@ Após instalar, certifique-se de que o Docker Desktop está rodando.
 
 ```bash
 git clone <repository-url>
+cd Teste_Partner_Pro
 cd product-manager
 ```
 
