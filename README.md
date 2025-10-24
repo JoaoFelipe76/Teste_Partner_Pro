@@ -666,10 +666,6 @@ class ProductUseCaseTest {
 
 Este projeto foi desenvolvido como desafio técnico para PARTNER Pro.
 
-## 👨‍💻 Autor
-
-Desenvolvido com ❤️ para o desafio técnico PARTNER Pro
-
 ---
 
 **Nota**: Para usar as funcionalidades de AI, você precisa de uma chave válida da OpenAI API. Configure em `application.properties`.
