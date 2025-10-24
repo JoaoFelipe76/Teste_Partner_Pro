@@ -82,6 +82,7 @@ src/main/java/br/com/partnerpro/product_manager/
 └── ProductManagerApplication.java
 ```
 
+
 ## 🚀 Funcionalidades Principais
 
 ### 🔐 Autenticação e Segurança
@@ -200,21 +201,42 @@ spring.cache.caffeine.spec=maximumSize=100,expireAfterWrite=300s
 ## 📋 Requisitos
 
 - **Java 17+**
-- **PostgreSQL 12+**
+- **PostgreSQL 12+** (instalado localmente)
 - **Maven 3.8+**
-- **Docker e Docker Compose** (opcional, mas recomendado)
+- **Docker Desktop** (obrigatório para Prometheus e Grafana)
 - **Chave API OpenAI** (para funcionalidades de AI)
 
 ## ⚙️ Configuração e Execução
 
-### 1. Clone o Repositório
+### 1. Instale o PostgreSQL Localmente
+
+Baixe e instale o PostgreSQL:
+- **Windows**: https://www.postgresql.org/download/windows/
+- **macOS**: `brew install postgresql`
+- **Linux**: `sudo apt-get install postgresql`
+
+Crie o banco de dados:
+```sql
+CREATE DATABASE "product-manager-db";
+```
+
+### 2. Instale o Docker Desktop
+
+O Docker Desktop é **obrigatório** para executar Prometheus e Grafana:
+
+- **Windows/macOS**: https://www.docker.com/products/docker-desktop/
+- **Linux**: https://docs.docker.com/desktop/install/linux-install/
+
+Após instalar, certifique-se de que o Docker Desktop está rodando.
+
+### 3. Clone o Repositório
 
 ```bash
 git clone <repository-url>
 cd product-manager
 ```
 
-### 2. Configure as Variáveis de Ambiente
+### 4. Configure as Variáveis de Ambiente
 
 Edite o arquivo `src/main/resources/application.properties`:
 
@@ -222,13 +244,13 @@ Edite o arquivo `src/main/resources/application.properties`:
 # OpenAI API Key (obrigatório para AI)
 spring.ai.openai.api-key=sua-chave-aqui
 
-# Database (ajuste se necessário)
+# Database Local (ajuste usuário e senha conforme sua instalação)
 spring.datasource.url=jdbc:postgresql://localhost:5432/product-manager-db
 spring.datasource.username=postgres
 spring.datasource.password=1234
 ```
 
-### 3. Inicie os Serviços com Docker
+### 5. Inicie os Serviços de Monitoramento com Docker
 
 ```bash
 cd product-manager
@@ -236,11 +258,12 @@ docker-compose up -d
 ```
 
 Isso iniciará:
-- PostgreSQL na porta 5432
-- Prometheus na porta 9090
-- Grafana na porta 3000
+- ✅ Prometheus na porta 9090
+- ✅ Grafana na porta 3000
 
-### 4. Execute a Aplicação
+**Nota**: O PostgreSQL **não** está no Docker, ele deve estar instalado e rodando localmente.
+
+### 6. Execute a Aplicação
 
 ```bash
 ./mvnw spring-boot:run
@@ -460,49 +483,70 @@ curl -X POST http://localhost:8080/api/ai/report \
 
 ## 🐳 Docker
 
-### Serviços Disponíveis
+### Pré-requisito: Docker Desktop
+
+Antes de executar os serviços, certifique-se de ter o **Docker Desktop** instalado e rodando:
+
+- **Download**: https://www.docker.com/products/docker-desktop/
+- Após instalar, abra o Docker Desktop e aguarde até que esteja completamente iniciado
+
+### Serviços Disponíveis no Docker
+
+**Importante**: O PostgreSQL **NÃO** está no Docker. Ele deve estar instalado e rodando localmente na sua máquina.
+
+Os serviços Docker são apenas para **monitoramento**:
 
 ```yaml
 services:
-  postgres:
-    image: postgres:16
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: product-manager-db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.48.0
     ports:
       - "9090:9090"
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:10.2.2
     ports:
       - "3000:3000"
     environment:
       GF_SECURITY_ADMIN_PASSWORD: admin
 ```
 
-### Comandos Úteis
+### Comandos Úteis do Docker
 
 ```bash
-# Iniciar todos os serviços
+# Iniciar serviços de monitoramento (Prometheus e Grafana)
 docker-compose up -d
 
-# Ver logs
+# Ver logs dos serviços
 docker-compose logs -f
+
+# Ver status dos containers
+docker-compose ps
 
 # Parar serviços
 docker-compose down
 
 # Parar e remover volumes
 docker-compose down -v
+
+# Reiniciar um serviço específico
+docker-compose restart prometheus
+docker-compose restart grafana
 ```
+
+### Verificar se o Docker Desktop está Rodando
+
+**Windows/macOS**: Verifique se o ícone do Docker Desktop está ativo na barra de tarefas
+
+**Linha de comando**:
+```bash
+docker --version
+docker ps
+```
+
+Se aparecer erro, certifique-se de que o Docker Desktop está aberto e iniciado.
 
 ## 🔍 Monitoramento
 
