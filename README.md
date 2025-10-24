@@ -16,15 +16,15 @@ Cadastro de novos usuários com validação
 
 <img width="1866" height="919" alt="image" src="https://github.com/user-attachments/assets/a6d99041-8f0b-4434-9b8f-2de28a87159a" />
 
-### Dashboard Interativo
-Dashboard com gráficos e estatísticas em tempo real
-
-<img width="1862" height="920" alt="image" src="https://github.com/user-attachments/assets/d144f6f3-8b23-4f86-9e21-05103af96d80" />
-
 ### Gerenciamento de Produtos
 CRUD completo com filtros avançados e validação
 
 <img width="1864" height="915" alt="image" src="https://github.com/user-attachments/assets/a53391d4-9fa6-467c-8fbb-1ff69d48c18e" />
+
+### Dashboard Interativo
+Dashboard com gráficos e estatísticas em tempo real
+
+<img width="1862" height="920" alt="image" src="https://github.com/user-attachments/assets/d144f6f3-8b23-4f86-9e21-05103af96d80" />
 
 ### Assistente AI
 Chat inteligente para análise de dados e geração de relatórios
