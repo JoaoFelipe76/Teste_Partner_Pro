@@ -21,6 +21,9 @@ CRUD completo com filtros avançados e validação
 
 <img width="1864" height="915" alt="image" src="https://github.com/user-attachments/assets/a53391d4-9fa6-467c-8fbb-1ff69d48c18e" />
 
+<img width="1867" height="919" alt="image" src="https://github.com/user-attachments/assets/b87205b7-fe89-433c-8dd7-e474936efd85" />
+
+
 ### Dashboard Interativo
 Dashboard com gráficos e estatísticas em tempo real
 
